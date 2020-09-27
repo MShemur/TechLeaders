@@ -3,7 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaxNumber", "MaxNumber\MaxNumber.csproj", "{A11E2432-8926-4460-B772-97010746087A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaxNumber", "MaxNumber\MaxNumber.csproj", "{A11E2432-8926-4460-B772-97010746087A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurrencyExchange", "CurrencyExchange\CurrencyExchange.csproj", "{179667D1-0054-46C0-8093-367F3E5FFCCF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreyScale", "GreyScale\GreyScale.csproj", "{392F4995-7734-40C4-B07C-BE7F033B7706}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaxNumberTests", "MaxNumberTests\MaxNumberTests.csproj", "{6688D2B9-6607-4186-A06C-C9A9478332EB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MaximumNumber", "MaximumNumber", "{A891F9AD-D302-4A4A-AC98-7B4A15580150}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExhcnagePathFinder", "ExhcnagePathFinder", "{F72CC581-8481-4D12-872F-B4DCFF326F84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrencyExchangeTests", "CurrencyExchangeTests\CurrencyExchangeTests.csproj", "{D386AE8A-84E2-444F-AC32-1CBED45FAA82}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +27,31 @@ Global
 		{A11E2432-8926-4460-B772-97010746087A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A11E2432-8926-4460-B772-97010746087A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A11E2432-8926-4460-B772-97010746087A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{179667D1-0054-46C0-8093-367F3E5FFCCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{179667D1-0054-46C0-8093-367F3E5FFCCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{179667D1-0054-46C0-8093-367F3E5FFCCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{179667D1-0054-46C0-8093-367F3E5FFCCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{392F4995-7734-40C4-B07C-BE7F033B7706}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{392F4995-7734-40C4-B07C-BE7F033B7706}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{392F4995-7734-40C4-B07C-BE7F033B7706}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{392F4995-7734-40C4-B07C-BE7F033B7706}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6688D2B9-6607-4186-A06C-C9A9478332EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6688D2B9-6607-4186-A06C-C9A9478332EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6688D2B9-6607-4186-A06C-C9A9478332EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6688D2B9-6607-4186-A06C-C9A9478332EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D386AE8A-84E2-444F-AC32-1CBED45FAA82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D386AE8A-84E2-444F-AC32-1CBED45FAA82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D386AE8A-84E2-444F-AC32-1CBED45FAA82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D386AE8A-84E2-444F-AC32-1CBED45FAA82}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A11E2432-8926-4460-B772-97010746087A} = {A891F9AD-D302-4A4A-AC98-7B4A15580150}
+		{179667D1-0054-46C0-8093-367F3E5FFCCF} = {F72CC581-8481-4D12-872F-B4DCFF326F84}
+		{6688D2B9-6607-4186-A06C-C9A9478332EB} = {A891F9AD-D302-4A4A-AC98-7B4A15580150}
+		{D386AE8A-84E2-444F-AC32-1CBED45FAA82} = {F72CC581-8481-4D12-872F-B4DCFF326F84}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {096A7339-CA32-4156-9BDB-FA745A8B3A33}

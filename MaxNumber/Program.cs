@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.IO;
+using System.Linq;
 
 namespace MaxNumber
 {
@@ -6,37 +10,58 @@ namespace MaxNumber
     {
         static void Main(string[] args)
         {
-            var array = new[] { 1, 5, 65, 7, 5, 9, 12, 18, 84, 11, 55, 685, 17, 25, 93, 412, 618, 84 };
-            var count = 4;
-            var counter = 0;
-
-            for (int j = 0; j < count; j++)
+            try
             {
-                var maxIndex = j;
-                var max = array[maxIndex];
-                for (int i = j; i < array.Length; i++)
-                {
-                    if (array[i] > max)
-                    {
-                        max = array[i];
-                        maxIndex = i;
-                    }
-                    counter++;
-                }
+                StringGetter stringGetter = new StringGetter();
 
-                var temp = array[j];
-                array[j] = max;
-                array[maxIndex] = temp;
+                var strings = stringGetter.GetStringsFromFile();
+
+                var fileAddress = stringGetter.FileAddress;
+                var folderName = fileAddress.Substring(0, fileAddress.LastIndexOf(@"\", StringComparison.Ordinal) + 1);
+
+                GetInputData(strings, out var maxNumberCount, out var inputNumbers);
+
+                MaxNumberFinder maxNumberFinder = new MaxNumberFinder(inputNumbers, maxNumberCount);
+
+                File.WriteAllText(folderName + "output.txt", maxNumberFinder.GetMaxNumbers());
+
+                Console.WriteLine("Successfully written");
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message, ex.StackTrace);
             }
 
-            for (int i = 0; i < count; i++)
-            {
-                Console.Write(array[i] + " ");
-            }
-
-            Console.WriteLine();
-            Console.WriteLine(counter);
             Console.ReadKey();
+        }
+
+        private static void GetInputData(List<string> strings, out int maxNumberCount, out int[] inputNumbers)
+        {
+            bool correctNumberCount = int.TryParse(strings[0], out var numbersCount);
+            bool correctMaxNumberCount = int.TryParse(strings[2], out maxNumberCount);
+
+            var arrayN = strings[1].Split().ToList();
+
+            if (correctNumberCount && correctMaxNumberCount)
+            {
+                inputNumbers = new int[numbersCount];
+                for (int i = 0; i < numbersCount; i++)
+                {
+                    if (int.TryParse(arrayN[i], out var number))
+                    {
+                        inputNumbers[i] = number;
+                    }
+                    else
+                    {
+                        throw new Exception("Wrong input data");
+                    }
+                }
+            }
+            else
+            {
+                throw new Exception("Wrong input data");
+            }
         }
     }
 }
