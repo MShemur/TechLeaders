@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 namespace CurrencyExchange
@@ -16,8 +15,10 @@ namespace CurrencyExchange
         /// Pairs of currencies form a graph
         /// </summary>
         private Dictionary<string, List<string>> graph;
-        private List<string> checkedVertexes;
-        private Dictionary<string, string> waysForVertexes;
+
+        private HashSet<string> checkedNodes;
+        
+        private Dictionary<string, string> waysForNodes;
         private Queue<string> searchQue;
 
         /// <summary>
@@ -36,8 +37,8 @@ namespace CurrencyExchange
         private void InitInputData()
         {
             searchQue = new Queue<string>();
-            checkedVertexes = new List<string>();
-            waysForVertexes = new Dictionary<string, string>();
+            checkedNodes = new HashSet<string>();
+            waysForNodes = new Dictionary<string, string>();
 
             FillGraphFromInput(ref graph);
         }
@@ -49,20 +50,14 @@ namespace CurrencyExchange
         public string GetExchangePath()
         {
             GetSearchCurrencies(searchCurrencies, out var changeFrom, out var changeTo);
-
-            searchQue.Enqueue(changeFrom);
-            checkedVertexes.Add(changeFrom);
-
-            ExploreVertex(searchQue.Dequeue(), changeTo);
-
+            FindWaysForNodes(changeFrom, changeTo);
             var path = GetPathList(changeFrom, changeTo);
-            path.Reverse();
 
-            StringBuilder way = new StringBuilder();
+            var way = new StringBuilder();
 
-            foreach (var vertex in path)
+            foreach (var node in path)
             {
-                way.Append(vertex);
+                way.Append(node);
                 way.Append(" ");
             }
 
@@ -108,44 +103,41 @@ namespace CurrencyExchange
         /// <summary>
         /// Searching for currency we want to change to in a graph recursively.Filling dictionary of shortest way to this currency
         /// </summary>
-        /// <param name="currentGraphVertex"></param>
-        /// <param name="searchVertex">currency we are looking for</param>
-        private void ExploreVertex(string currentGraphVertex, string searchVertex)
+        /// <param name="currentNode"></param>
+        /// <param name="searchNode">currency we are looking for</param>
+        private void FindWaysForNodes(string currentNode, string searchNode)
         {
-            if (currentGraphVertex == searchVertex) return;
-
-            if (graph.ContainsKey(currentGraphVertex))
-            {
-                foreach (var vertex in graph[currentGraphVertex])
-                {
-                    if (checkedVertexes.Contains(vertex)) continue;
-
-                    checkedVertexes.Add(vertex);
-                    searchQue.Enqueue(vertex);
-                    waysForVertexes.Add(vertex, currentGraphVertex);
-                }
-            }
+            searchQue.Enqueue(currentNode);
+            checkedNodes.Add(currentNode);
 
             while (searchQue.Count > 0)
             {
-                ExploreVertex(searchQue.Dequeue(), searchVertex);
+                if (checkedNodes.Contains(searchNode)) break;
+                var parent = searchQue.Dequeue();
+                if (!graph.ContainsKey(parent)) continue;
+                
+                foreach (var child in graph[parent])
+                {
+                    if (checkedNodes.Contains(child)) continue;
+
+                    checkedNodes.Add(child);
+                    searchQue.Enqueue(child);
+                    waysForNodes.Add(child, parent);
+                }
             }
         }
 
         private List<string> GetPathList(string entry, string search)
         {
             var way = new List<string>();
-            if (waysForVertexes.TryGetValue(search, out string value))
+            if (waysForNodes.Count == 0) return way;
+            way.Add(search);
+            var key = search;
+            while (waysForNodes.ContainsKey(key))
             {
-                if (value != entry)
-                    way.AddRange(GetPathList(entry, value));
-                else
-                {
-                    way.Add(entry);
-                }
+                way.Insert(0, waysForNodes[key]);
+                key = waysForNodes[key];
             }
-
-            if (way.Any()) way.Insert(0, search);
 
             return way;
         }

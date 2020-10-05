@@ -12,12 +12,14 @@ namespace CurrencyExchange.Tests
             string searchCurrency = "USD UAH";
             List<string> inputs = new List<string>() {
                 "USD SEK",
+                "SEK USD",
                 "USD RUB",
                 "RUB EUR",
                 "RUB POL",
                 "SEK UAH",
                 "POL UAH",
                 "EUR ARG",
+                "ARG EUR",
                 "POL GBD",
                 "GBD EUR",
                 "EUR GBD",
@@ -30,19 +32,23 @@ namespace CurrencyExchange.Tests
                 "CED SEK",
             };
             ExchangePathFinder pathFinder = new ExchangePathFinder(searchCurrency, inputs);
-            Assert.AreEqual(pathFinder.GetExchangePath(), "USD SEK UAH");
+            Assert.AreEqual("USD SEK UAH", pathFinder.GetExchangePath());
 
             searchCurrency = "EUR ANA";
             pathFinder = new ExchangePathFinder(searchCurrency, inputs);
-            Assert.AreEqual(pathFinder.GetExchangePath(), "EUR GBD CAD CED SEK ANA");
+            Assert.AreEqual("EUR GBD CAD CED SEK ANA", pathFinder.GetExchangePath());
 
             searchCurrency = "EUR UAH";
             pathFinder = new ExchangePathFinder(searchCurrency, inputs);
-            Assert.AreEqual(pathFinder.GetExchangePath(), "EUR GBD CAD CED UAH");
+            Assert.AreEqual("EUR GBD CAD CED UAH", pathFinder.GetExchangePath());
 
             searchCurrency = "CAD EUR";
             pathFinder = new ExchangePathFinder(searchCurrency, inputs);
-            Assert.AreEqual(pathFinder.GetExchangePath(), "");
+            Assert.AreEqual("CAD CED SEK USD RUB EUR", pathFinder.GetExchangePath());
+
+            searchCurrency = "UAH GAR";
+            pathFinder = new ExchangePathFinder(searchCurrency, inputs);
+            Assert.AreEqual("", pathFinder.GetExchangePath());
         }
     }
 }

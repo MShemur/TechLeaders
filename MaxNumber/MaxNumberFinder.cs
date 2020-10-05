@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace MaxNumber
 {
@@ -29,34 +27,55 @@ namespace MaxNumber
         /// <returns></returns>
         public string GetMaxNumbers()
         {
-            string numbers = "";
-            var counter = 0;
+            var numbers = new SortedSet<ValueIndex>(new ValueIndexComparer());
+            string numbersOutput = "";
 
-            for (int j = 0; j < maxNumberCount; j++)
+            //также бинарная (двоичная) куча будет хорошо
+
+            for (int i = 0; i < inputNumbers.Length; i++)
             {
-                var maxIndex = j;
-                var max = inputNumbers[maxIndex];
-                for (int i = j; i < inputNumbers.Length; i++)
+                var number = new ValueIndex(inputNumbers[i], i);
+
+                if (numbers.Count < maxNumberCount)
                 {
-                    if (inputNumbers[i] > max)
-                    {
-                        max = inputNumbers[i];
-                        maxIndex = i;
-                    }
-                    counter++;
+                    numbers.Add(number);
                 }
+                else
+                {
+                    if (numbers.Max.Value >= inputNumbers[i]) continue;
 
-                var temp = inputNumbers[j];
-                inputNumbers[j] = max;
-                inputNumbers[maxIndex] = temp;
+                    numbers.Remove(numbers.Max);
+                    numbers.Add(number);
+                }
             }
 
-            for (int i = 0; i < maxNumberCount; i++)
+            foreach (var value in numbers)
             {
-                numbers += inputNumbers[i] + " ";
+                numbersOutput += value.Value + " ";
             }
 
-            return numbers.Trim();
+            return numbersOutput.Trim();
+        }
+    }
+
+    public class ValueIndexComparer : IComparer<ValueIndex>
+    {
+        public int Compare(ValueIndex x, ValueIndex y)
+        {
+            if (x.Value != y.Value) return -x.Value.CompareTo(y.Value);
+            return x.Index.CompareTo(y.Index);
+        }
+    }
+
+    public struct ValueIndex
+    {
+        public int Value;
+        public int Index;
+
+        public ValueIndex(int value, int index)
+        {
+            Value = value;
+            Index = index;
         }
     }
 }
