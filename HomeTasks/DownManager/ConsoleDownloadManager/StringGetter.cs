@@ -14,7 +14,7 @@ namespace ConsoleDownloadManager
 
         public List<string> GetStringsFromFile(params string[] address)
         {
-            Console.WriteLine("Type file address:");
+            Console.WriteLine("Type txt file address:");
             if (address.Length > 0)
                 FileAddress = address[0];
             else

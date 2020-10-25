@@ -12,14 +12,9 @@ namespace WpfApp
     {
         public string FileAddress { get; private set; }
 
-
-        public List<string> GetStringsFromFile(params string[] address)
+        public List<string> GetStringsFromFile(string address)
         {
-            Console.WriteLine("Type file address:");
-            if (address != null)
-                FileAddress = address[0];
-            else
-                FileAddress = Console.ReadLine().Replace("\"", "");
+            FileAddress = address;
 
             if (!File.Exists(FileAddress)) throw new FileNotFoundException();
 
