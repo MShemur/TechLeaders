@@ -118,7 +118,8 @@ namespace DownloadManager
 
                     if (response.Content.Headers.ContentLength.HasValue)
                         fileSize = (int)response.Content.Headers.ContentLength.Value;
-                    fileSize = 0;
+                    //FOR TEST!!
+                    //fileSize = 0;
                     var bufferSize = fileSize != 0 ? fileSize / 1000 : 100000;
 
                     var buffer = new byte[bufferSize];

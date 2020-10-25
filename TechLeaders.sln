@@ -19,21 +19,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurrencyExchangeTests", "Cu
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HomeTask", "HomeTask", "{5162A6CC-3101-4445-8064-CEA59E0A49EA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dictionary", "Dictionary\Dictionary.csproj", "{10A43EFA-A64B-477A-A272-17871FD4155F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dictionary", "HomeTasks\Dictionary\Dictionary\Dictionary.csproj", "{10A43EFA-A64B-477A-A272-17871FD4155F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestProject1", "..\DictionaryTest\TestProject1\TestProject1.csproj", "{B121C5E7-D65B-4F87-9B22-63AB8C43F3DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DictionaryTest", "HomeTasks\Dictionary\DictionaryTest\DictionaryTest.csproj", "{B121C5E7-D65B-4F87-9B22-63AB8C43F3DB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HometaskDictionary", "HometaskDictionary", "{EA8961FD-6FDD-4E73-988B-26B10E128950}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HometaskAsync", "HometaskAsync", "{E901C4F0-940E-40BE-BD76-CB173F995DC7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DownloadManager", "DownloadManager\DownloadManager.csproj", "{1BFD1FD6-04EC-4821-BD41-0611E5296698}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DownloadManager", "HomeTasks\DownManager\DownloadManager\DownloadManager.csproj", "{1BFD1FD6-04EC-4821-BD41-0611E5296698}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleDownloadManager", "ConsoleDownloadManager\ConsoleDownloadManager.csproj", "{171DBA33-E61C-4EED-A262-11BDA12F5794}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleDownloadManager", "HomeTasks\DownManager\ConsoleDownloadManager\ConsoleDownloadManager.csproj", "{171DBA33-E61C-4EED-A262-11BDA12F5794}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp", "WindowsFormsApp\WindowsFormsApp.csproj", "{C70AF04B-79B4-416C-B3B8-F7DA52645796}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfApp", "WpfApp\WpfApp.csproj", "{53A00750-8C2F-4AE3-88F4-987D62A64DDC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfApp", "HomeTasks\DownManager\WpfApp\WpfApp.csproj", "{53A00750-8C2F-4AE3-88F4-987D62A64DDC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -77,10 +75,6 @@ Global
 		{171DBA33-E61C-4EED-A262-11BDA12F5794}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{171DBA33-E61C-4EED-A262-11BDA12F5794}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{171DBA33-E61C-4EED-A262-11BDA12F5794}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C70AF04B-79B4-416C-B3B8-F7DA52645796}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C70AF04B-79B4-416C-B3B8-F7DA52645796}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C70AF04B-79B4-416C-B3B8-F7DA52645796}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C70AF04B-79B4-416C-B3B8-F7DA52645796}.Release|Any CPU.Build.0 = Release|Any CPU
 		{53A00750-8C2F-4AE3-88F4-987D62A64DDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{53A00750-8C2F-4AE3-88F4-987D62A64DDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53A00750-8C2F-4AE3-88F4-987D62A64DDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -100,7 +94,6 @@ Global
 		{E901C4F0-940E-40BE-BD76-CB173F995DC7} = {5162A6CC-3101-4445-8064-CEA59E0A49EA}
 		{1BFD1FD6-04EC-4821-BD41-0611E5296698} = {E901C4F0-940E-40BE-BD76-CB173F995DC7}
 		{171DBA33-E61C-4EED-A262-11BDA12F5794} = {E901C4F0-940E-40BE-BD76-CB173F995DC7}
-		{C70AF04B-79B4-416C-B3B8-F7DA52645796} = {E901C4F0-940E-40BE-BD76-CB173F995DC7}
 		{53A00750-8C2F-4AE3-88F4-987D62A64DDC} = {E901C4F0-940E-40BE-BD76-CB173F995DC7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
